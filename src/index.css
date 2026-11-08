@@ -1,0 +1,302 @@
+/* ============================================================
+   Custom Fonts
+   ============================================================ */
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('/fonts/SolaimanLipi.eot');
+  src: url('/fonts/SolaimanLipi.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/SolaimanLipi.woff2') format('woff2'),
+    url('/fonts/SolaimanLipi.woff') format('woff'),
+    url('/fonts/SolaimanLipi.svg#SolaimanLipi') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Li Kongka Borno Unicode';
+  src: url('/fonts/LiKongkaBornoUnicode.eot');
+  src: url('/fonts/LiKongkaBornoUnicode.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/LiKongkaBornoUnicode.woff2') format('woff2'),
+    url('/fonts/LiKongkaBornoUnicode.woff') format('woff'),
+    url('/fonts/LiKongkaBornoUnicode.svg#LiKongkaBornoUnicode') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Li Sirajee Sheikh Unicode';
+  src: url('/fonts/LiSirajeeSheikhUnicode.eot');
+  src: url('/fonts/LiSirajeeSheikhUnicode.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/LiSirajeeSheikhUnicode.woff2') format('woff2'),
+    url('/fonts/LiSirajeeSheikhUnicode.woff') format('woff'),
+    url('/fonts/LiSirajeeSheikhUnicode.svg#LiSirajeeSheikhUnicode') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   CSS Variables & Design Tokens
+   ============================================================ */
+:root {
+  --primary-rose: #f43f5e;
+  --primary-rose-hover: #e11d48;
+  --primary-rose-dark: #be123c;
+  --primary-rose-deep: #881337;
+  --rose-glow: rgba(244, 63, 94, 0.35);
+  --pink-light: #fff1f2;
+  --pink-soft: #ffe4e6;
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --card-border: rgba(255, 255, 255, 0.7);
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --text-light: #9ca3af;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 25px -3px rgba(225, 29, 72, 0.12);
+  --shadow-lg: 0 20px 40px -4px rgba(225, 29, 72, 0.2);
+  --shadow-glow: 0 0 25px rgba(244, 63, 94, 0.45);
+}
+
+/* ============================================================
+   Reset & Base Styles
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: 'SolaimanLipi', 'Hind Siliguri', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: #fff1f2;
+  min-height: 100%;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--primary-rose);
+  color: #ffffff;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-shell {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   Floating Hearts Background Animation
+   ============================================================ */
+.floating-hearts-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  color: var(--primary-rose);
+  animation-name: floatHeartUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 2px 8px rgba(244, 63, 94, 0.3));
+}
+
+@keyframes floatHeartUp {
+  0% {
+    transform: translateY(0) scale(0.8) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-50vh) scale(1.1) rotate(15deg);
+  }
+  100% {
+    transform: translateY(-110vh) scale(0.9) rotate(-15deg);
+  }
+}
+
+/* ============================================================
+   Modern Toast Notification System
+   ============================================================ */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 440px;
+  pointer-events: none;
+  animation: toastSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -24px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.modern-toast {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.4rem 1.8rem;
+  border-radius: 1.6rem;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15), 0 0 15px rgba(244, 63, 94, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.toast-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.toast-success .toast-icon-wrap {
+  background: #fdf2f8;
+  color: var(--primary-rose);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.3);
+}
+
+.toast-error .toast-icon-wrap {
+  background: #fef2f2;
+  color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+}
+
+.toast-info .toast-icon-wrap {
+  background: #fff7ed;
+  color: #f97316;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.25);
+}
+
+.toast-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast-title {
+  font-family: 'Hind Siliguri', 'SolaimanLipi', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.2rem;
+}
+
+.toast-message {
+  font-family: 'SolaimanLipi', 'Hind Siliguri', sans-serif;
+  font-size: 1.35rem;
+  color: #4b5563;
+  line-height: 1.35;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.toast-close:hover {
+  color: #111827;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(244, 63, 94, 0.15);
+}
+
+.toast-progress-bar {
+  height: 100%;
+  background: var(--primary-rose);
+  width: 100%;
+  animation: toastProgress 4s linear forwards;
+}
+
+@keyframes toastProgress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* ============================================================
+   Helper Utility Classes
+   ============================================================ */
+.text-rose {
+  color: var(--primary-rose) !important;
+}
+
+.text-gold {
+  color: #f59e0b !important;
+}
+
+.mr-1 {
+  margin-right: 0.4rem;
+}
+
+.mr-2 {
+  margin-right: 0.8rem;
+}
+
+.ml-2 {
+  margin-left: 0.8rem;
+}
