@@ -24,3 +24,14 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## GitHub Pages Deployment
+
+This project includes automated deployment to GitHub Pages via GitHub Actions.
+
+### Setup Instructions:
+1. Go to your repository on GitHub.
+2. Click **Settings** > **Pages** (in the left sidebar).
+3. Under **Build and deployment** > **Source**, choose **GitHub Actions**.
+4. Push your changes to the `main` branch. The action will automatically build and publish the website.
+5. Your app will be live at `https://<username>.github.io/be-my-valentine/`.
