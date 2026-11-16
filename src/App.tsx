@@ -431,7 +431,7 @@ function App() {
           <footer className="modern-footer">
             <p>
               Made with <i className="fas fa-heart text-rose"></i> by{" "}
-              <a href="https://wapborhan.xyz/" target="_blank" rel="noreferrer">
+              <a href="https://wapborhan.com/" target="_blank" rel="noreferrer">
                 Borhan Uddin
               </a>
             </p>
@@ -443,7 +443,7 @@ function App() {
           <div className="hero-top-bar">
             <div className="announcement-pill">
               <span className="pill-dot"></span>
-              <span>ভ্যালেন্টাইন স্পেশাল ২০২৬ ✨</span>
+              <span>ভ্যালেন্টাইন স্পেশাল {new Date().getFullYear()} ✨</span>
             </div>
           </div>
 
